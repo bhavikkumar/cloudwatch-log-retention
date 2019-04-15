@@ -1,7 +1,6 @@
 language: go
 go:
 - 1.12.x
-- tip
 env:
 - GO111MODULE=on GOOS=linux GOARCH=amd64
 matrix:
@@ -23,7 +22,7 @@ script:
 - go vet ./... 2> govet-report.out
 - go test ./... -coverprofile=coverage.out -json > report.json
 after_success:
-- if [ ! -z "$TRAVIS_TAG" ]; then sonar-scanner; fi
+- sonar-scanner
 - zip main.zip main
 deploy:
   provider: releases
