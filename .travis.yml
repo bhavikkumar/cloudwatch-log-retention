@@ -3,7 +3,7 @@ go:
 - 1.12.x
 - tip
 env:
-- GOOS=linux GOARCH=amd64
+- GO111MODULE=on GOOS=linux GOARCH=amd64
 matrix:
   allow_failures:
   - go: tip
