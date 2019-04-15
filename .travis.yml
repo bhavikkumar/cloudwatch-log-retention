@@ -23,7 +23,7 @@ script:
 - go vet ./... 2> govet-report.out
 - go test ./... -coverprofile=coverage.out -json > report.json
 after_success:
-- if [ ! -z "$TRAVIS_TAG" ]; then sonar-scanner -X -Dsonar.projectVersion=$TRAVIS_TAG fi
+- if [ ! -z "$TRAVIS_TAG" ]; then sonar-scanner -X -Dsonar.projectVersion=$TRAVIS_TAG; fi
 - zip main.zip main
 deploy:
   provider: releases
