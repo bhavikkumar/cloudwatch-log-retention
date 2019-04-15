@@ -1,5 +1,8 @@
-
+[![Build Status](https://travis-ci.com/bhavikkumar/cloudwatch-log-retention.svg?branch=master)](https://travis-ci.com/bhavikkumar/cloudwatch-log-retention)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=cloudwatch-log-retention&metric=coverage)](https://sonarcloud.io/dashboard?id=cloudwatch-log-retention)
+[![Go Report Card](https://goreportcard.com/badge/github.com/bhavikkumar/cloudwatch-log-retention)](https://goreportcard.com/report/github.com/bhavikkumar/cloudwatch-log-retention)
 ![GitHub](https://img.shields.io/github/license/bhavikkumar/cloudwatch-log-retention.svg)
+![GitHub release](https://img.shields.io/github/release/bhavikkumar/cloudwatch-log-retention.svg)
 # cloudwatch-log-retention
 
 Lambda function which sets the retention period on cloudwatch log groups when the log group is create or if the retention period is modified.
