@@ -1,0 +1,40 @@
+language: go
+go:
+- 1.12.x
+- tip
+env:
+- GO111MODULE=on
+- GOOS=linux
+- GOARCH=amd64
+matrix:
+  allow_failures:
+  - go: tip
+  fast_finish: true
+cache:
+  directories:
+  - "$HOME/.sonar/cache"
+addons:
+  sonarcloud:
+    organization: bhavikkumar-github
+    token:
+      secure: FTMrC2jKnFcDwemlxigRwSYNJnJBJpnn7VrNNelgZf+iUPJOkO2UVr74U9bhYz7jyZANdCSmhZqRYQ6j9cvMmgkhpD05PxHZxxd8eZpF2Mth7mUl46gqu3Nnjb2NsMmsHqHdb4UwoqYlV9yWTUhCQkQyvhgJQFA56XT4aox1+FtSAy2vD9ZOORyWpY5JQKZvBk8vuKBXaHPnXP8wzy5K8Kh2gtdztW45z7EcKQw5GA5cVUqQhNlgyh8tbzc1sI/Q6hMgi/cBBYFyX71dwTiZvSgcJMdlaOfvXx3XMYpchKL46AbL2MU0IRz28hksvgFjem2ReYhUFtqL94Wm+59yWrdvziWDpR4y2fdK6Q6o78RwVGIlD9iOM+IIWT1YerAsC2L/sczZNRFZ/kIbN6pVRZJvf0Sc2EmS5+VojVjnr2WNCm43SW61NWV9D2qWMarMIYnZqkQkaevcmFAKspyIx1SoJ53kWe+GPxh2hycxD+qothoF2VU5RHblQeO8EOeVrMFewlB+Bu9+YGIcSZX5ccW6kXwiOwq+7kRQvBI3pKF8tnXMBEL+7rOpfwuR6KLaq4P5bKtVad9QsN5wEbLaVjilNUPybCD+0h44paJcI5vYxdVikIK59IMr9iQC/AU09nIjaNGqZRqcS7FJ27+vl0wXI/XSx+Ms2qiohsFiDIc=
+install:
+- go mod download
+- go build -o main main.go
+script:
+- go vet ./... 2> govet-report.out
+- go test ./... -coverprofile=coverage.out -json > report.json
+after_success:
+- sonar-scanner
+- zip main.zip main
+deploy:
+  provider: releases
+  api_key:
+    secure: jp0GdtbyFYsNREgppAlWspbbjfUDSRWyiuRJt5595kyrUUryYp4UVz6IpXeJjFLuI9fA7/5uOB+ZTANZK5/I2baUNaXxTIQgPEbNphMnV3KI7ymtcoy7Rb8h+OON+49M7Ij6kSYLHusJHWE5Qbm7H7f4wyorhnEeegC2wTc8u2f/zBpPiD9IG36v0LRtb9+kUmXNMIVNYWyEg7sfi8gvQ4XnrzEO1SsHNpsysl/NR1F2/AMJtODXFsGU3dJ/YQgsRw6w6fC4C21lm98mlO+iQEgu/Qx/KZgMuqGaAQ8MxfC12aDBl7nHwy6zQH9N0NCVh2Q3P9VvdWlwKs0kx2tXdqGp+KgZCWD1Lo+3SJHXiN+KH2ivd53VBFglRy/kny5X6SuNv9cVU/92Xr2EpCMwBx3+wtfNg06pgx1jo2N+p3YfLvlIk2GI8ThpX2eeIprjV4DBlzUnODTP9AfhrnQZy3AtNBaPthqu25/7KFvFXSKTi/2Qo4ueSmVnI/s9kx7KBcCA+uNmf2fyGT4a8yjzJW89AIVkhxJwPkx0lTw2wR9tjx3FkcLRN+OkCKcONejZO0wBEU6z2sZz84ylfwt8oUWEbMWxLSfL2/Y/X5aKk7AUxFDX2rLYHLhTgE2I8ojdCh1yP3xpX/T4ug8UQJho9jBkecVWUa/8QPImsFh7oAI=
+  file: main.zip
+  skip_cleanup: true
+  on:
+    repo: bhavikkumar/cloudwatch-log-retention
+    tags: true
+    go: '1.12.x'
+
