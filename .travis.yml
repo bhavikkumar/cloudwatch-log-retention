@@ -2,17 +2,9 @@ language: go
 go:
 - 1.12.x
 - tip
+env:
+- GOOS=linux GOARCH=amd64
 matrix:
-  include:
-  - go: 1.12.x
-    env:
-    - GO111MODULE=on
-    - GOOS=linux
-    - GOARCH=amd64
-  - go: tip
-    env:
-    - GOOS=linux
-    - GOARCH=amd64
   allow_failures:
   - go: tip
   fast_finish: true
