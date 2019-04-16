@@ -17,21 +17,35 @@ addons:
       secure: FTMrC2jKnFcDwemlxigRwSYNJnJBJpnn7VrNNelgZf+iUPJOkO2UVr74U9bhYz7jyZANdCSmhZqRYQ6j9cvMmgkhpD05PxHZxxd8eZpF2Mth7mUl46gqu3Nnjb2NsMmsHqHdb4UwoqYlV9yWTUhCQkQyvhgJQFA56XT4aox1+FtSAy2vD9ZOORyWpY5JQKZvBk8vuKBXaHPnXP8wzy5K8Kh2gtdztW45z7EcKQw5GA5cVUqQhNlgyh8tbzc1sI/Q6hMgi/cBBYFyX71dwTiZvSgcJMdlaOfvXx3XMYpchKL46AbL2MU0IRz28hksvgFjem2ReYhUFtqL94Wm+59yWrdvziWDpR4y2fdK6Q6o78RwVGIlD9iOM+IIWT1YerAsC2L/sczZNRFZ/kIbN6pVRZJvf0Sc2EmS5+VojVjnr2WNCm43SW61NWV9D2qWMarMIYnZqkQkaevcmFAKspyIx1SoJ53kWe+GPxh2hycxD+qothoF2VU5RHblQeO8EOeVrMFewlB+Bu9+YGIcSZX5ccW6kXwiOwq+7kRQvBI3pKF8tnXMBEL+7rOpfwuR6KLaq4P5bKtVad9QsN5wEbLaVjilNUPybCD+0h44paJcI5vYxdVikIK59IMr9iQC/AU09nIjaNGqZRqcS7FJ27+vl0wXI/XSx+Ms2qiohsFiDIc=
 install:
 - go mod download
-- go build -o main main.go
+- go build -ldflags="-s -w" -o main main.go
 script:
 - go vet ./... 2> govet-report.out
 - go test ./... -coverprofile=coverage.out -json > report.json
 after_success:
 - sonar-scanner
-- zip main.zip main
+- zip build/cloudwatch-log-retention.zip main
 deploy:
-  provider: releases
+- provider: releases
   api_key:
     secure: jp0GdtbyFYsNREgppAlWspbbjfUDSRWyiuRJt5595kyrUUryYp4UVz6IpXeJjFLuI9fA7/5uOB+ZTANZK5/I2baUNaXxTIQgPEbNphMnV3KI7ymtcoy7Rb8h+OON+49M7Ij6kSYLHusJHWE5Qbm7H7f4wyorhnEeegC2wTc8u2f/zBpPiD9IG36v0LRtb9+kUmXNMIVNYWyEg7sfi8gvQ4XnrzEO1SsHNpsysl/NR1F2/AMJtODXFsGU3dJ/YQgsRw6w6fC4C21lm98mlO+iQEgu/Qx/KZgMuqGaAQ8MxfC12aDBl7nHwy6zQH9N0NCVh2Q3P9VvdWlwKs0kx2tXdqGp+KgZCWD1Lo+3SJHXiN+KH2ivd53VBFglRy/kny5X6SuNv9cVU/92Xr2EpCMwBx3+wtfNg06pgx1jo2N+p3YfLvlIk2GI8ThpX2eeIprjV4DBlzUnODTP9AfhrnQZy3AtNBaPthqu25/7KFvFXSKTi/2Qo4ueSmVnI/s9kx7KBcCA+uNmf2fyGT4a8yjzJW89AIVkhxJwPkx0lTw2wR9tjx3FkcLRN+OkCKcONejZO0wBEU6z2sZz84ylfwt8oUWEbMWxLSfL2/Y/X5aKk7AUxFDX2rLYHLhTgE2I8ojdCh1yP3xpX/T4ug8UQJho9jBkecVWUa/8QPImsFh7oAI=
-  file: main.zip
+  file: build/main.zip
   skip_cleanup: true
   on:
     repo: bhavikkumar/cloudwatch-log-retention
     tags: true
-    go: '1.12.x'
-
+    go: 1.12.x
+- provider: s3
+  skip_cleanup: true
+  access_key_id:
+    secure: VgGPsSA3zMk4kfZdYR+FH5PNDOIaZcueCq6hLg4vqDmeYhulpeiKMz16IHBBfXf7a6/16CPTp5rVSa6FSwQijoWAo/gYPLATyUjZYuKoLEklXo+NjcvZ3O3zoZkygtzZWyRKU+J3VTxwpn5/nzAUQYxnL2hlCvYYakx5W7kMEsM5ZIo5DIy8wLKzvyAv0nbl1RPZiiZFmQPdOyY41aGcLYU0VZr5kqwb7YPqqO0H3Sp5L864D1iku5DiC5qwRTyrW0BP1sKyNAIah8M/JmXmbgWTBtaIsY2z5C+0yZegHoBMgjZc/CCNbaTC/CYQbWu6IgfxeOsyynzMZHKCy5ZXeEgImwWxrbDyPEAHSebKxbxER34FmT4PI9MPsMrzd1yeTHpwlFGxBMrLTk/Nn6QRUTprQk4eXRO2m5+WKARFRfbGdx2ziSjor0hppaJqKr3av7dFMahnk+IDT9ifvtlqfbaonRIAIMyiv7yYbqGodIAxb6WglvYQttqr7kJDYVW77S+ZMb2aQKZsQ5m9NlMPKwJmj4S6C5rdXNcHPMvLMASCWHX8LBoUPtzWwEYbH3NT44Rx2RKAo7iIZoYflOygFpwV1SwZZM/I6m7dIsdySN4xDV5vwI6j1grKhe0cYmSpeOtpNC6E14OSA0o0May1vx7IHtD8+wGEFyh4w2Cw588=
+  secret_access_key:
+    secure: Mdi9Y+FzWrEayCAAHEL4Jw5jt18phddRnbsBEnbr68PTBIccU6W1z+63h3WNKK+Oge0lL8x9SV+pRQdY8rnA5P7YO7MvxQjnDGY7Hrl0WGQhqYM2s61Gpn018+LmcveTO99m/ZHurX/2Y1K8Oi3M6eDvUlsTemVES3AWln9aTa0cZF3m20ooF6nAkjhgpiApNIuELbmjOwOn9atiClK8lRoH4SZ8ouh33bRJTcI9Z4mGS7o0EYx0gWjc6yMxHGVzjuF+KcISMSCzOqRwcNhSG3QfGBwAOJN2ZV0rAH3oR6nNibZ0pLXUDp3PCVKZ3y3rc+L2QPyURkuORwVK+quchhsgkS2Y+cFXmmt52o+3GpjP+cHcak+NtnasxseFotOxLWKp08a/qzHJV7+8D5J7Bmz5v6/qz0mqv3KQCHR89LDsNXbUEyvKO/mBc5EXYt0VhlN7c+42WdukT5CwQkaSvKGhk4pF8Kb1lq9TSnV7WcvOV3wUagRkFfrIc4bPRy2aHwxa1LBfvBHVYx8Yjb58vb6LZrw0IhSuIMSDUUg0HeuyqtqlYhIHdxM7PxJSbqity7DfP+VO+1AslccQ7iAHsyUt1/S6mZnc1lHI/mepf16zW6+bwh339jHn3ErAErKJ/sES3KEKEZdkUl9HasWjb5eu+BDuaNiG38VZxC1eRHM=
+  bucket: artifact.bhavik.io
+  region: us-east-1
+  local_dir: build
+  upload-dir: lambda
+  acl: private
+  on:
+    repo: bhavikkumar/cloudwatch-log-retention
+    tags: true
+    go: 1.12.x
