@@ -23,12 +23,13 @@ script:
 - go test ./... -coverprofile=coverage.out -json > report.json
 after_success:
 - sonar-scanner
-- zip build/cloudwatch-log-retention.zip main
+- mkdir build
+- zip build/cloudwatch-log-retention$TRAVIS_TAG.zip main
 deploy:
 - provider: releases
   api_key:
     secure: jp0GdtbyFYsNREgppAlWspbbjfUDSRWyiuRJt5595kyrUUryYp4UVz6IpXeJjFLuI9fA7/5uOB+ZTANZK5/I2baUNaXxTIQgPEbNphMnV3KI7ymtcoy7Rb8h+OON+49M7Ij6kSYLHusJHWE5Qbm7H7f4wyorhnEeegC2wTc8u2f/zBpPiD9IG36v0LRtb9+kUmXNMIVNYWyEg7sfi8gvQ4XnrzEO1SsHNpsysl/NR1F2/AMJtODXFsGU3dJ/YQgsRw6w6fC4C21lm98mlO+iQEgu/Qx/KZgMuqGaAQ8MxfC12aDBl7nHwy6zQH9N0NCVh2Q3P9VvdWlwKs0kx2tXdqGp+KgZCWD1Lo+3SJHXiN+KH2ivd53VBFglRy/kny5X6SuNv9cVU/92Xr2EpCMwBx3+wtfNg06pgx1jo2N+p3YfLvlIk2GI8ThpX2eeIprjV4DBlzUnODTP9AfhrnQZy3AtNBaPthqu25/7KFvFXSKTi/2Qo4ueSmVnI/s9kx7KBcCA+uNmf2fyGT4a8yjzJW89AIVkhxJwPkx0lTw2wR9tjx3FkcLRN+OkCKcONejZO0wBEU6z2sZz84ylfwt8oUWEbMWxLSfL2/Y/X5aKk7AUxFDX2rLYHLhTgE2I8ojdCh1yP3xpX/T4ug8UQJho9jBkecVWUa/8QPImsFh7oAI=
-  file: build/main.zip
+  file: build/cloudwatch-log-retention$TRAVIS_TAG.zip
   skip_cleanup: true
   on:
     repo: bhavikkumar/cloudwatch-log-retention
