@@ -1,8 +1,19 @@
 language: go
 go:
 - 1.12.x
+- tip
 env:
-- GO111MODULE=on GOOS=linux GOARCH=amd64
+  global:
+  - GO111MODULE=on GOOS=linux GOARCH=amd64
+  - TF_IN_AUTOMATION=1
+  - VERSION="0.11.13"
+  - AWS_DEFAULT_REGION=us-east-1
+  - secure: C3PoaTeH4tzVFOnhCyCdHsELoQCmfu7McPc/iDlgywpabSGG9vcPr3/bn/bWjL5k+BIRK0XXAOgDG8uIcct7IbUUds75IVny1kytz0QbijJAC91/EYr54nvxCPl4r6QIF3hlcaDQPa01WRIkprqf2NbGijLzE/25CGFWNW95/vBabQAFcM/WOjDF2KjyuUd8tFOBgP7lqWJ5Qbl0++wA42KnLjH80v2q3GZGp3gPs3RRInEuefVzkHYptn7XDJp9Vyyl4jSCBFUKzL+1HBWpxtF6ZKe67AyvWd2MMvtoo5vXl54sSj5LrA6hz8HELQFY75t5rGjBShZlEZzIY6e70TnX8UDfAPRBe9dRBwUUcrEeASaL5JlJsDwrtDDI82X0nOTgFtJZd/SYdxOfj1vSqtg8WI2uxz8KR9Q0BAeHjAB3ORPmRf9yL8VOfnrJTDF0J6LRx3jnTVk4ItvYBLh4K7XYOT4bP+Y55GCmrTdqTBCjaabsb6Fv7UH1Zw7gXRWh19wV3SB+hnSragcqHpSLl1LMJUCIY6V0v7lzNDhwl/qsUlzNprLPQI8ZuJgyE8KcfvGIthPQ0RrW/maSz2+EAJMGmeIqkZMiA0C4zg2kQnTDiyPjc/LVxNfHeKcO2BeOOxjw8IKruPWAeTJ9YT14Jy0E/rHL/bhOClTnbmjwx0A=
+  - secure: r2UyZl4dotZoqhFra7ezKXN38XTY4gAqjWy+8u/gwlrPr43JDAWLvXvdu/bSgEmYIhlK46yQtw+yzSHSEKj0WwGb9JhepGYim7zm9u2tpr2g5NB76aM4rkT2SnBeCHPeqUIhfD4ITY9bcUZ7+cB1DJyGM+0tG4YlAZpK6XxhLx7oZ3wiaJ52n9v2b1Cxj5wBPr9u3xU8UTbDNGZDUa4BriSzXiIefZ/sGCMpQzvF0cRcMeb/g8lmNPNij8xlZO4DickTqBuzt0S29VbE28iXeXQUZ/xO8Ich9P4tLbFbAPkImmBPWshvFzqFonIWmlYJ3a5930MFHFttFwJ4457264O72LTnIeuZB8JSxllMpcCrx0z5iUk4UrIJBSdMCxkjAkkBk1oc2fm3qfT40ZZgZ3PyhCwPxNEwMkhGXHZC1VlKSPbvSPZAJWbnrWS+U7WkMqupIXkMDPBgvmUuTYPnbpnYDKKZ5qeIWzhy1GUyxaSCwyzHgJMdWnUDKwZ1J8xcnK2Bz/fowIB4Wt+PMtpc+GTBQWod98CDI/m3JcA9MfbHLl1g36eMJaboG0TCTZC6yBOqiE42itYVpj05XU4IByd1fRZCqu9WSypHYLqHSUsQdUqvFTFFiVjSEL8GThnmuL4nF+exbMk7SvHHi4PyjuUMes1juTxAferoMKJwN7c=
+  - secure: TCaCCYpR9VoCAPqGCU6rG130Ow8ACF/qJyDDwjeCyA81RfVOymCbGp3xlr80Hy91xYgSYYyriJvxFNntI+vYRI0gemFOkyJPQoCmq72fRZawO2TSErMlVwPBtEGHheLuHeQZ8ZDBPGCgGIIRMCbv3YadQiRlhlu6ONLXKAkeJGtgkIuZR1YQ2GmDcZyKanLwFOZ1L3GLPSG712RBwQIRW1+yLbDPuzGxuNT/8MkP+SkAXCDdGacMMZrLXNSySbRQjvRUXWND7cTHgHQ4gD48XuNq2NS/pZLeWV9Zq/UOhnhTL+eA+pjrg+vq2Vlxfx+DNeU1DouR7c1V314x3C7n72GrInM5RpjEs7duXdMM1FY7EW7lrO6VlOtqcLdc08iVBWAP0rwS7aaCBowu67bA1bJ4Z0GTcKkg523BbjTRMsF6M5ZvyEZMTLqB6UAlLTY/ohhDzUOwyCD1FUwEeXAg4rGaBlQtjECpEBRoIMPudy5Tj1LJSEcNid6MAjigQ8Ip7vBiGmn+kn6/0y1rxJMUgHFPXn6kWupwPcqXsJB7giubuXtS13gL985DgKQfTrc3Cdt9GHzE1syRDc2iP1SWpO9Y2sbizhBxTs/v6g8rXt6gtWgo2V+INThg0QbsgYmLlwDVySPC0CfSDm+7u3rORStAzPWWzOD8skbX81WrUaw=
+  - secure: pHZQ0pa0GuiOGZE39DcwEevy2chkNi+lOlochO7Oh/WTBTuoseun3YWAIoweDON7LPv7XS8PcAiz4RJAig9qz2bocaJF0bi8pYFmeNsdAI+/Eube+OUj6H5UzQObhHsak6PHeXW4mNOdqinQqIFL/kCW7dlFjoQG5+2/H9bq49HuDGI5nMxP+yvRBn6zYUm/XtaFPl5mTs8CvaOASucxvHX0tU73xFG3LUVZAWuryP1V96Bk8E+NO7WGg2ibz+f+I7kumQc4wtZGwjR2+bo5hMz+Fwau0UWBv8QsML78Zc8BuXglUiF0Q/tTNOxnwiTgTCxwRvjLseQUgsufOnVQvmOvV6DM49MKu3qG827Kpf9xo0UnhpxNWduEU0+Y6ETknoy83smqTEcUuw8DSRT+3BaCYy4oPxVzlg6MI6qxMip3pnXEXztxNvZuU+2zfXw8u5Dc4tiP2cQJOolPRU/F9PN6nU2pfNBAYveaPOs03YhmPWSgArfhwouuBrBC+U/x73hfRYu4PdhHsFnVUNgGOyJ4ugLU+53cWI548IDY1fadubuiggy3jUO+FX2F/7lCynHvaq5C55hSrLTwqpMsRznj2RXFAyhmriCCItXSpZkuxNyXlpSglIknrkkOrSyF7o6u5EilQsTCyvFGlJbFqOYduIvWFigQVOZp4nKMye4=
+  - secure: nBeRN8EPxEuQg1NdDg1ITvwXtpdOuAh2pDD2A1FNP5nryLS2VlkBJAzBtUBUpSewHrscQRMCaLEvRqIUseAh0n1f/WTXb6WC9fJJQOaxKpfM+4ukE9SEycKaqlcWOlvnxRvqRjCFdyXweuDzMvIqoBsTO2Re6FnFE1sEvqUY+PbmXDH8n8rXC9mwa2gzwnJEZZYqz5DxODYNBFK+qc/zhAMV3ao7yYb8TDuFP+LcCoX+E8m9rSXYscBePOai8fb2F3tQEyB4pgNBCX8ZZJouujkDzEn6n4Sk8XLa8kYWKvM0QElyyVOmNEJR0e2Zyqb4rHtPbH1pI7t3RCKuMl0OyGizeTkKk4TxyuDY6h/B4Q3Rb3kPObB3LAkQ3qDRFX6mQBTWSyLFfsgZlsi7YeNM3OXXPLZhdAoMJl85+0bGLpkD5sSFrNkojLZ0xHrj6qLc5Mj2FcEzmtBUlaiSdMlEfZ7pQ96r1bhTpZk/YZJ0FsAu4X0oKWOvk+29u8kiT/EQqAK6FrrjSvpDovaPftl62bSvukgIpS1wj42uzPyUA6bWUx6pkV3b33xfI3XhI7IeMp3KixDJYQriclKwVrXr2NZVRX0N4FKLgqou+1Yp08nm1rOffh6nK/lznF1UM95bHBsLJKAlggiQgOUE/2FpM+CqjrziB0w8kpsZdwhSm5E=
+  - secure: W2MmEl7hU+XXhhpFhkdkr1WEYs8yOP3DMpp6Rhm+3Aiwre8333HpW2fKyXgBoiUMS+DTAeSEw/FnsV8Cn57irlymuFTfCr7/Vj5Y0p/G+xprDQbHkuuhwnN05WSoslNHv0c+NS6zUe77LmoIC//x7/JsIwMXgCs9j6YVBtpwlsKmBEk4FwsxpCS76s4Er3hHdezA2WFyP6Tq1HyIZSGWCuEHb2zVgsnZ5eg8dz5MuP/sxiEVeloQ+4jt6QGGthoFdIZeVfScY2PkdSzc0UunDHnnqH9MV8tIo4ZEPpR8COskArzmKZ8CM6VQnXhcHGh/V1vr7Sr5czG9DBBsk6wTb/chKn4cJ4JKZvC6OIHvNf8uPHYXdvifXb0PezQyIojja6g0EsIgnkwe+/utc/d2DiifniOmXPGr6GKwh/6N2xfynAkSS1AAQs+zZ9ztppwvtKrca1c1T4qRjiFDjP1h+XlS4cztyKPd1o/hbDXgonr0XJxnZLJe6aR7DzHuFAX1E0YE85zQWfnHe7LZWwGmT9B7+yCZ/MjJNruTfH5V4M4yLiUDpbmwwzcILoAk9ywGV9l84fyPH7XryBgXEzx9f3dKALxGh0wn5aMfnhEQ1NeoxrfEyVcIybL9V+FMdNIspPMlDzRZy28rIREWBFIbisvWvQ7tgl6ImwoE9q2ZLgA=
 matrix:
   allow_failures:
   - go: tip
@@ -15,38 +26,79 @@ addons:
     organization: bhavikkumar-github
     token:
       secure: FTMrC2jKnFcDwemlxigRwSYNJnJBJpnn7VrNNelgZf+iUPJOkO2UVr74U9bhYz7jyZANdCSmhZqRYQ6j9cvMmgkhpD05PxHZxxd8eZpF2Mth7mUl46gqu3Nnjb2NsMmsHqHdb4UwoqYlV9yWTUhCQkQyvhgJQFA56XT4aox1+FtSAy2vD9ZOORyWpY5JQKZvBk8vuKBXaHPnXP8wzy5K8Kh2gtdztW45z7EcKQw5GA5cVUqQhNlgyh8tbzc1sI/Q6hMgi/cBBYFyX71dwTiZvSgcJMdlaOfvXx3XMYpchKL46AbL2MU0IRz28hksvgFjem2ReYhUFtqL94Wm+59yWrdvziWDpR4y2fdK6Q6o78RwVGIlD9iOM+IIWT1YerAsC2L/sczZNRFZ/kIbN6pVRZJvf0Sc2EmS5+VojVjnr2WNCm43SW61NWV9D2qWMarMIYnZqkQkaevcmFAKspyIx1SoJ53kWe+GPxh2hycxD+qothoF2VU5RHblQeO8EOeVrMFewlB+Bu9+YGIcSZX5ccW6kXwiOwq+7kRQvBI3pKF8tnXMBEL+7rOpfwuR6KLaq4P5bKtVad9QsN5wEbLaVjilNUPybCD+0h44paJcI5vYxdVikIK59IMr9iQC/AU09nIjaNGqZRqcS7FJ27+vl0wXI/XSx+Ms2qiohsFiDIc=
+deploy_lambda: &deploy_lambda
+  provider: script
+  script: terraform apply -backup="-" -input=false -auto-approve -var aws_default_region=${AWS_DEFAULT_REGION} -var lambda_version=${TRAVIS_TAG} -var account_id=${AWS_ACCOUNT_ID} -var operations_account_id=${OPERATIONS_ACCOUNT_ID} -var role_name=${ROLE_NAME} >/dev/null
+  skip_cleanup: true
+  on:
+    repo: bhavikkumar/cloudwatch-log-retention
+    tags: true
+    go: 1.12.x
+deploy_lambda_stage: &deploy_lambda_stage
+  if: tag IS present
+  go: 1.12.x
+  script: skip
+  before_deploy:
+  - wget https://releases.hashicorp.com/terraform/${VERSION}/terraform_${VERSION}_linux_amd64.zip
+  - unzip -o terraform_${VERSION}_linux_amd64.zip -d $HOME/bin
+  - chmod +x $HOME/bin/terraform
+  - cd deployment
+  - terraform init -backend-config="bucket=terraform.bhavik.io" -backend-config="region=${AWS_DEFAULT_REGION}" -backend-config="dynamodb_table=terraform-state" -backend-config="kms_key_id=${KMS_KEY_ID}" -backend-config="role_arn=${ROLE_ARN}" >/dev/null
+  deploy:
+    <<: *deploy_lambda
 install:
 - go mod download
 - go build -ldflags="-s -w" -o main main.go
 script:
 - go vet ./... 2> govet-report.out
 - go test ./... -coverprofile=coverage.out -json > report.json
-after_success:
 - sonar-scanner
-- mkdir build
-- zip build/cloudwatch-log-retention$TRAVIS_TAG.zip main
-deploy:
-- provider: releases
-  api_key:
-    secure: jp0GdtbyFYsNREgppAlWspbbjfUDSRWyiuRJt5595kyrUUryYp4UVz6IpXeJjFLuI9fA7/5uOB+ZTANZK5/I2baUNaXxTIQgPEbNphMnV3KI7ymtcoy7Rb8h+OON+49M7Ij6kSYLHusJHWE5Qbm7H7f4wyorhnEeegC2wTc8u2f/zBpPiD9IG36v0LRtb9+kUmXNMIVNYWyEg7sfi8gvQ4XnrzEO1SsHNpsysl/NR1F2/AMJtODXFsGU3dJ/YQgsRw6w6fC4C21lm98mlO+iQEgu/Qx/KZgMuqGaAQ8MxfC12aDBl7nHwy6zQH9N0NCVh2Q3P9VvdWlwKs0kx2tXdqGp+KgZCWD1Lo+3SJHXiN+KH2ivd53VBFglRy/kny5X6SuNv9cVU/92Xr2EpCMwBx3+wtfNg06pgx1jo2N+p3YfLvlIk2GI8ThpX2eeIprjV4DBlzUnODTP9AfhrnQZy3AtNBaPthqu25/7KFvFXSKTi/2Qo4ueSmVnI/s9kx7KBcCA+uNmf2fyGT4a8yjzJW89AIVkhxJwPkx0lTw2wR9tjx3FkcLRN+OkCKcONejZO0wBEU6z2sZz84ylfwt8oUWEbMWxLSfL2/Y/X5aKk7AUxFDX2rLYHLhTgE2I8ojdCh1yP3xpX/T4ug8UQJho9jBkecVWUa/8QPImsFh7oAI=
-  file: build/cloudwatch-log-retention$TRAVIS_TAG.zip
-  skip_cleanup: true
-  on:
-    repo: bhavikkumar/cloudwatch-log-retention
-    tags: true
+after_success:
+- zip deployment/cloudwatch-log-retention$TRAVIS_TAG.zip main
+jobs:
+  include:
+  - stage: GitHub Release
+    if: tag IS present
     go: 1.12.x
-- provider: s3
-  skip_cleanup: true
-  access_key_id:
-    secure: VgGPsSA3zMk4kfZdYR+FH5PNDOIaZcueCq6hLg4vqDmeYhulpeiKMz16IHBBfXf7a6/16CPTp5rVSa6FSwQijoWAo/gYPLATyUjZYuKoLEklXo+NjcvZ3O3zoZkygtzZWyRKU+J3VTxwpn5/nzAUQYxnL2hlCvYYakx5W7kMEsM5ZIo5DIy8wLKzvyAv0nbl1RPZiiZFmQPdOyY41aGcLYU0VZr5kqwb7YPqqO0H3Sp5L864D1iku5DiC5qwRTyrW0BP1sKyNAIah8M/JmXmbgWTBtaIsY2z5C+0yZegHoBMgjZc/CCNbaTC/CYQbWu6IgfxeOsyynzMZHKCy5ZXeEgImwWxrbDyPEAHSebKxbxER34FmT4PI9MPsMrzd1yeTHpwlFGxBMrLTk/Nn6QRUTprQk4eXRO2m5+WKARFRfbGdx2ziSjor0hppaJqKr3av7dFMahnk+IDT9ifvtlqfbaonRIAIMyiv7yYbqGodIAxb6WglvYQttqr7kJDYVW77S+ZMb2aQKZsQ5m9NlMPKwJmj4S6C5rdXNcHPMvLMASCWHX8LBoUPtzWwEYbH3NT44Rx2RKAo7iIZoYflOygFpwV1SwZZM/I6m7dIsdySN4xDV5vwI6j1grKhe0cYmSpeOtpNC6E14OSA0o0May1vx7IHtD8+wGEFyh4w2Cw588=
-  secret_access_key:
-    secure: Mdi9Y+FzWrEayCAAHEL4Jw5jt18phddRnbsBEnbr68PTBIccU6W1z+63h3WNKK+Oge0lL8x9SV+pRQdY8rnA5P7YO7MvxQjnDGY7Hrl0WGQhqYM2s61Gpn018+LmcveTO99m/ZHurX/2Y1K8Oi3M6eDvUlsTemVES3AWln9aTa0cZF3m20ooF6nAkjhgpiApNIuELbmjOwOn9atiClK8lRoH4SZ8ouh33bRJTcI9Z4mGS7o0EYx0gWjc6yMxHGVzjuF+KcISMSCzOqRwcNhSG3QfGBwAOJN2ZV0rAH3oR6nNibZ0pLXUDp3PCVKZ3y3rc+L2QPyURkuORwVK+quchhsgkS2Y+cFXmmt52o+3GpjP+cHcak+NtnasxseFotOxLWKp08a/qzHJV7+8D5J7Bmz5v6/qz0mqv3KQCHR89LDsNXbUEyvKO/mBc5EXYt0VhlN7c+42WdukT5CwQkaSvKGhk4pF8Kb1lq9TSnV7WcvOV3wUagRkFfrIc4bPRy2aHwxa1LBfvBHVYx8Yjb58vb6LZrw0IhSuIMSDUUg0HeuyqtqlYhIHdxM7PxJSbqity7DfP+VO+1AslccQ7iAHsyUt1/S6mZnc1lHI/mepf16zW6+bwh339jHn3ErAErKJ/sES3KEKEZdkUl9HasWjb5eu+BDuaNiG38VZxC1eRHM=
-  bucket: artifact.bhavik.io
-  region: us-east-1
-  local_dir: build
-  upload-dir: lambda
-  acl: private
-  on:
-    repo: bhavikkumar/cloudwatch-log-retention
-    tags: true
-    go: 1.12.x
+    script: skip
+    deploy:
+      provider: releases
+      api_key:
+        secure: jp0GdtbyFYsNREgppAlWspbbjfUDSRWyiuRJt5595kyrUUryYp4UVz6IpXeJjFLuI9fA7/5uOB+ZTANZK5/I2baUNaXxTIQgPEbNphMnV3KI7ymtcoy7Rb8h+OON+49M7Ij6kSYLHusJHWE5Qbm7H7f4wyorhnEeegC2wTc8u2f/zBpPiD9IG36v0LRtb9+kUmXNMIVNYWyEg7sfi8gvQ4XnrzEO1SsHNpsysl/NR1F2/AMJtODXFsGU3dJ/YQgsRw6w6fC4C21lm98mlO+iQEgu/Qx/KZgMuqGaAQ8MxfC12aDBl7nHwy6zQH9N0NCVh2Q3P9VvdWlwKs0kx2tXdqGp+KgZCWD1Lo+3SJHXiN+KH2ivd53VBFglRy/kny5X6SuNv9cVU/92Xr2EpCMwBx3+wtfNg06pgx1jo2N+p3YfLvlIk2GI8ThpX2eeIprjV4DBlzUnODTP9AfhrnQZy3AtNBaPthqu25/7KFvFXSKTi/2Qo4ueSmVnI/s9kx7KBcCA+uNmf2fyGT4a8yjzJW89AIVkhxJwPkx0lTw2wR9tjx3FkcLRN+OkCKcONejZO0wBEU6z2sZz84ylfwt8oUWEbMWxLSfL2/Y/X5aKk7AUxFDX2rLYHLhTgE2I8ojdCh1yP3xpX/T4ug8UQJho9jBkecVWUa/8QPImsFh7oAI=
+      file: deployment/cloudwatch-log-retention$TRAVIS_TAG.zip
+      skip_cleanup: true
+      on:
+        repo: bhavikkumar/cloudwatch-log-retention
+        tags: true
+        go: 1.12.x
+  - stage: Deploy to Development
+    <<: *deploy_lambda_stage
+    if: type != pull_request
+    env:
+      - TF_WORKSPACE=development
+      - secure: n7gHgEUtvC51hFuw6QUXUbQxHqsXk/GGPWBRQNw8IWDdX6aWyYbTDyaCZW5xJe9c0G7nJBgCDKuVlMyxdO74Gn1cROl/mAMeLvav9aZ4999SVsskIiwmQsctp1Z1TGKs44YEQInnedA7xUv86rqvPiAk1fhwu+J2MtBGbucjn+jjzA9HPslriNRutGPJgZpvmYJWUvjNDgwm3rBtls/xo0qZXBFuFKPMRLYYF7Z9XgE0tP/2CZbf20m75UKQVUTYW+cXkeQKCehW7RL2kPmDDTvaoRxIYKTK/dgCUx7nJCBqBlweV4mccNf0ugmSUoArV+ZIZmAR3KjzrO6IpvnebctO0ioLhGORmYzORYTrUOkJSz8dBgsgY0OFg5+ASNMLZIlai/xugcW8Z3I/ZddKfNv9WfXX2BABBmuzfM6cxNfhn+xSlujEWe1oUFW0gMTJqLGxT35X9W6t2kJ8zBzqQys8EHZEWnNwkzDKtJvPR0BHCWBbjB9aHo3P41ENw5WwFTwohfSSJ1YzA4hvWxkgfB1dsa9aYi4D87p5t209E4s5DwslalukgRJnJnKcLHOeMErr7kAE97PowHa4oHE5d5mUTzNs9f/nRZCsRSBgrhngxt8OtNJC+P/KVKSA/LndYkUHRbErMDFIe2tRFxgLLhaQgn6L8mbA+SsBi76lj/E=
+    deploy:
+      <<: *deploy_lambda
+      on:
+        all_branches: true
+        go: 1.12.x
+  - stage: Deploy to Master
+    <<: *deploy_lambda_stage
+    env:
+      - TF_WORKSPACE=master
+      - secure: dLNwzI2QQQteS/M3ZPOdkgNpM2kGWaBDa1ZBk2hEgnp5VjnG3FaHsut9uTgJHAjoSKYMzkGrFPpk4Ak0uKOW/ux2wYWpwHQKVxXofOOrB2D9J0C9sjIm3H3o2cKmeQoxmnWr+RjLBibd+dA+agAQ+zxniqJ7GtQ0+BEPymFHDWzzXudgQs2pBkLGe2qXaOnDMqNvUxhK0YWsadPqL4uMTuYWxIkPerr9B5aeg8tZDl/Ozfby1MVXVtngrbZo2rohiZvEyUItzshyFwKOuZB0asDyIaTgojoU9fNO8FESZ/ooLG7i6ASl2++dPiXml46QqpgszgkM2KmJzPAJ4L3DwhBU9ES1uJRnFXlyLlF3l4d+j2jsNxdaCpB8JaFntAoCCieykC4Ustu/+686j5hXeen+VNwUI5I1x5HwHmaUmTnbR7M1VNw52eW5ErPOJ1ALqfEQXE6o67EKMV7K388MbiMD38A+Jcu/FHlB1SuKpROwb55B7RNabNkfd5YrjgrPkMGIy1AQKG+JVubS4QWbpK2mDb4OqizJVWZpYunxHMh+yMhSMA4b5swNQ1pyyzmcIaPf2I4ja27JvcKDiyNhuiDRHG3qTX/axzn04VjsdyqTFmtx1JF9F9/03bUKsXP09O1VwpXux1+texntBrPD7tGrWshaVz/JhRtIYmkQXUI=
+  - stage: Deploy to Identity
+    <<: *deploy_lambda_stage
+    env:
+      - TF_WORKSPACE=identity
+      - secure: btXwBvMX/c/7rZGonKMVBKcgAFuAsjJ77SkfyWudE7N9pnapywRckrIRaB5IfKd0um1zMdi/WstVwMHam4Ckk7pgI+98XoYaYMO6L/9ZGx9hXQ2YiAx4GK5ZBtXo6lgWfrBMJ38hnlQhrQVGaA8V23W7PH/tJ61rFm0P/nLV7AwbSdDRKMR8FJiN+uCg2fveIMsa3it+Cuhact3XPQqy/eUnYNPyNtgWmgFoN6qxCdfxeBVqwnjLRS5j09p0xrNcSCetIY9BxyDNUPrI/zvJJq8P8cYlaiqkbA8TJolrpIlvACdDx1uzzirxhEIsr3JhEkX7RWhJPcEmMI1K7OXjWUeFwJER0zeAAhPxWzq1uOY9EznlObSY4Pd8fFrI4GgfWq1hXWhASWcHmOVhnBSfNsK9u3W+nlIjx4fKwz6Ddz2PcRfZMs2+5L2GXGKHKEbdP7+nc4nhD++7x7ZjhMxQ+6rCAZ2zHd21s1a/XpgxSM1BxnXU4if3hm3bL89NG0ATyTPxc6AVh4TzTN9/+RSK4NEuv292uVH0Kpn5VOKU2R0uFQ34nGdov5H+a7Wo2wb2KMtXD7PmKh+Hbq16M+7sYlFWPOqVkS+3CAMonWFfaR9sVfXcoCqS6vCQHPykgqjNnbckjFHkv/TXjrbetXLgNPZ+LqTXQjwCku3lrznp8nE=
+  - stage: Deploy to Operations
+    <<: *deploy_lambda_stage
+    env:
+      - TF_WORKSPACE=operations
+      - secure: m9NwKVA/fskQ9jZLtFXcobIaw0jrT5dKUAEefr/IMuhVF5pKC/Sn9lE0YMyLREuqSFXCb+C3sV8CjvpFgvjheji48iHCy1B0I3GDXOwzr4qCez5pnqGAdunDI0vISv8P3vycq9hd9duRvoJpOaZhSMehM5NlDTn4ZqWUbN8ETG6LECP/CxBbJ88kGQpR4zF1FKIgho3au/ayaXQ7gDGj9Evs434+PQ9z8ewNB0YjyX/rx7zBM8MdbsdbT3tneOXYdY6SyNTgeGqhtr94anIw7XqbDuTbgM5VnZ9iO9+Cr+Rin8exZ2YjQR1sgIEkVvq3/K1mH0sl3ZKSBmidPNRupDwho5+Rr0V7hytpEC6KbRA8QSHiO948D0NiklgVHmBGuGUxld14rK6NxVSslMdUrfssdypGpuD6WtCYE2H+ud3l2w9edSyVAN4h/aK0Es9cMQ8C8JUUu3pbVHmt1YsDLDKKbjqRBM1C/YIOgGmDtICdb7bI8ybRcqofapKGR3cmi6qBGC1JkPjXOR+Z9MiOrQg2K/gsNld0KSk9093fzydeJx6H8CIIrrSfJQEkUHHqlCnnTxIGaNgEeygEPyf03VWGzQMXRMGtpD+Q5/SW8KMFIHRagrEGwYaprE2cYb7FUX/mrB0DfnEZDHS5RY6X5Rit8/+3phS5eMrp2JBWrSw=
+  - stage: Deploy to Production
+    <<: *deploy_lambda_stage
+    env:
+      - TF_WORKSPACE=production
+      - secure: bo3FlpiueaenIkSQbeFGuysRpzEDkWYLxZkQRnFQ1/oYp+ZJUWglpNe53gsr4Y+eklheYrGz3KxmWHIKtv1+dB/C5mwQx8FvqWMwYywxWC6WChNyU73RdyAFD0ecgJK10r8cHhQDAA0SKmYQ+dZZkwj5XN5QnyqRR1umeTKir9pl+fqMqoMH7vwYpjmyVo/4N0o2oN2ozuDo1zHaEEBfwolbUcbE+oT25xB9HEMUY5bfVAp54jnhLglO2eUDBNautsdvEJRcQXMzB7OljPHZex7T3WfA8qL+sur+X53DNgbp6jfD0GLD8/TttO15Mb+0wWFyv3j2kCtBwmVO1U/ApUCrx6kGxPjArdHdNqMZ2uklUbtIPuWBXtEJNdKCduEpGThArNpt+3/qtG/4KwxDHmPEXLJBp2gZpXWoE9Og4M3ziKaLBWxs/iKWP+AKkwUj5+f+9XiqZih7vn/uWsbEGv1mZGLUei/+IWMgDJKUobmKSm9vFzDZWL67XWOUzCWhzr0mCszLfVeQ1UL/8erwli9WwzN+WovjtGMGAc8zx0ciFWSchzjQzMH6Zyr9wPCBHaPlAmjfqZuazEn7bdj5GVwI/mNOey+YTA4hIuqrmlZdhppEpAp14dYTPTIdT5hlAK5lRwvAWda5qaOJJBe1ILg6MfHbAYR5QgrX71MxpTQ=
