@@ -46,3 +46,15 @@ $env:CGO_ENABLED = "0"
 go build -o main main.go
 ~\Go\Bin\build-lambda-zip.exe -o main.zip main
 ```
+
+## Terraform Deployment
+
+The Terraform deployment is dependent on [Terraform Master](https://github.com/bhavikkumar/terraform-master) project for certain variables such as the KMS Key to use. This Terraform project uses workspaces to deploy in to different environments therefore the appropriate workspace should be selected first.
+ 
+The first thing to do is move the Lambda zip file to the deployment folder. Then run the following commands to deploy the Lambda function.
+ ```
+terraform init "-backend-config=backend.tfvars"
+terraform workspace select development
+terraform plan "-var-file=master.tfvars"
+terraform apply "-var-file=master.tfvars"
+```
