@@ -123,7 +123,7 @@ resource "aws_lambda_function" "lambda" {
   runtime          = "go1.x"
   memory_size      = 128
   kms_key_arn      = "${data.terraform_remote_state.master.default_kms_key_arn}"
-  filename         = "cloudwatch-log-destination${var.lambda_version}.zip"
+  filename         = "cloudwatch-log-retention${var.lambda_version}.zip"
   publish          = true
   source_code_hash = "${filebase64sha256(format("cloudwatch-log-retention%s.zip", var.lambda_version))}"
 
