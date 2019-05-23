@@ -1,26 +1,26 @@
 variable "account_id" {
-  type        = "string"
+  type        = string
   description = "The AWS Account ID where the lambda function should be deployed"
 }
 
 variable "aws_default_region" {
-  type        = "string"
+  type        = string
   default     = "us-east-1"
   description = "The AWS region where the resources will be located"
 }
 
 variable "lambda_version" {
-  type        = "string"
+  type        = string
   description = "The version of the lambda function to deploy"
 }
 
 variable "operations_account_id" {
-  type        = "string"
+  type        = string
   description = "The AWS account id for the operations account"
 }
 
 variable "profile" {
-  type        = "string"
+  type        = string
   default     = "default"
   description = "The AWS profile which terraform will use"
 }
@@ -31,12 +31,13 @@ variable "log_retention_period" {
 }
 
 variable "role_name" {
-  type        = "string"
+  type        = string
   description = "The role which terraform will assume in to the AWS accounts"
 }
 
 variable "tags" {
-  type        = "map"
+  type        = map(string)
   description = "A map of tags to add to all resources"
   default     = {}
 }
+
