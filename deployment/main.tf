@@ -12,7 +12,7 @@ terraform {
 locals {
   common_tags = {
     Owner       = "global"
-    Environment = "${terraform.workspace}"
+    Environment = terraform.workspace
   }
 }
 
